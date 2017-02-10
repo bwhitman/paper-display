@@ -67,6 +67,8 @@ Note I'm removing XML cruft like "&amp;", deleting links, wrapping the text to 2
 
 First set up the MCU for Arduino. [Sparkfun has a great tutorial for the Thing.](https://learn.sparkfun.com/tutorials/esp8266-thing-hookup-guide/installing-the-esp8266-arduino-addon) I'm sure other boards have similar ones. 
 
+You'll next want to install the ArduinoEpd library. It's hard to find so I've included it in this repository. 
+
 Load the `paper_display.ino` file from this repository into Arduino. Create a new `auth.h` file in the same project, and fill it with your WiFi credentials as well as your web services' host name and full URL path (without the http://). For example:
 
 ```C++
