@@ -18,7 +18,7 @@ const char path[] = "hostname.of.your.webservice.com/any_path";
 // How long to sleep in between displays, in seconds
 int sleepTimeS = 60*60; // one hour
 #define LED_PIN 5 // ESP8266 LED PIN 
-#define WAKEUP_PIN 4 // ESP8266 DTR pin
+#define WAKEUP_PIN 4 // ESP8266 pin that will wake up the EPD -- not to be confused with XPO/DTR to wake up the ESP
 #define MAX_H_CHARS 55 // Max characters to show horizontally
 char result[1000]; // Buffer to get web results in from
 
