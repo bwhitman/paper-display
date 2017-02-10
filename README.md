@@ -18,7 +18,7 @@ There's only a few parts you need to build this:
 
 ## Hookup
 
-The ePaper Display (hereafter `EPD`) comes with a convenient 6-pin wire harness that snaps in on the display and comes out to female header pins. While you're ensuring everything is hooked up right, I would solder male header pins to the ESP8266 (hereafter `MCU`) so that you can unplug and plug the `EPD` using jumper cables while debugging and development. Also, the same pins that are used for programming on the Sparkfun Thing are needed for the `EPD`, so you don't want to permanently attach the `EPD` in a way that prevents use of the pins until you are certain. 
+The ePaper Display (hereafter `EPD`) comes with a convenient 6-pin wire harness that snaps in on the display and comes out to female header pins. While you're ensuring everything is hooked up right, I would solder male header pins to the ESP8266 (hereafter `MCU`.) This will let you unplug and plug the `EPD` using the jumper cables. Also, the same pins that are used for programming on the Sparkfun Thing are needed for the `EPD`, so you don't want to permanently attach the `EPD` in a way that prevents use of the pins until you are certain everything is working alright. 
 
 ![EPD](https://github.com/bwhitman/paper-display/blob/master/images/K9PSMkF.png?raw=true)
 
