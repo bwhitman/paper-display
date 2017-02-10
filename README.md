@@ -35,6 +35,8 @@ You also need to run a short wire between `XPD` and `DTR` on the `MCU`. This all
 
 Lastly, connect the battery to the `MCU`. The micro USB jack on the `MCU` charges the battery. Let it charge fully once, and it should be good for over a year on no external power if running correctly.
 
+![Frame](https://github.com/bwhitman/paper-display/blob/master/images/IMG_1491.jpg?raw=true)
+
 ## Web service
 
 The `MCU` will connect to a webservice you define every time it wakes up. I made a very simple one, hosted for free on Google App Engine, that retrieves a random tweet from the last 200 of a certain username. I've included the source code to that service in this repository as `main.py`. You can host this service anywhere you'd like: but Google App Engine was particularly easy to get going and hasn't cost me anything yet. The web service just needs to return plain ASCII text (no HTML) that will fit on the `EPD` whenever the URL is accessed. 
