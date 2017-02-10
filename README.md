@@ -24,12 +24,12 @@ The ePaper Display (hereafter `EPD`) comes with a convenient 6-pin wire harness 
 
 Wire the `EPD` to the `MCU` as so:
 
-* *RST* to nowhere, you can chop this off at the plug end if you'd like
-* *WAKE_UP* to `pin 4`
-* *DIN* to `TXO`
-* *DOUT* to `RXI`
-* *GND* to `GND`
-* *VCC* to `VIN`
+* **RST** to nowhere, you can chop this off at the plug end if you'd like
+* **WAKE_UP** to `pin 4`
+* **DIN** to `TXO`
+* **DOUT** to `RXI`
+* **GND** to `GND`
+* **VCC** to `VIN`
 
 You also need to run a short wire between `XPD` and `DTR` on the `MCU`. This allows the `MCU` to enter and wake up from "deep sleep."
 
@@ -39,13 +39,35 @@ Lastly, connect the battery to the `MCU`. The micro USB jack on the `MCU` charge
 
 The `MCU` will connect to a webservice you define every time it wakes up. I made a very simple one, hosted for free on Google App Engine, that retrieves a random tweet from the last 200 of a certain username. I've included the source code to that service in this repository as `main.py`. You can host this service anywhere you'd like: but Google App Engine was particularly easy to get going and hasn't cost me anything yet. The web service just needs to return plain ASCII text (no HTML) that will fit on the `EPD` whenever the URL is accessed. 
 
+My web service is pretty straightforward, using the Tweepy API. If you want your frame to return tweets like this one, you can see in `main.py` that after setting up a Twitter API account and pasting in the authentication strings, the request handler is just:
+
+```python
+@app.route('/message')
+def message():
+	tweets = api.user_timeline(screen_name='cookbook', count=200, exclude_replies = True, include_rts = False)
+	shuffle(tweets)
+	text = tweets[0].text
+	text = unidecode(text)
+	text = text.replace('&amp;','&')
+	text = text.replace('&lt;','<')
+	text = text.replace('&gt;','>')
+	text = text.replace('&quot;','"')
+	text = text.replace('&apos;',"'")
+	text = re.sub(r"http.*? ", "", text+" ")[:-1]
+	text = "\n".join(textwrap.wrap(text, 25))
+	return text
+```
+
+Note I'm removing XML cruft like "&amp;", deleting links, wrapping the text to 25 columns using the `textwrap` python library, flattening the codespace to ASCII using `unidecode`, and not including replies or retweets using Tweepy. The simpler the text your webservice returns the less chance the `EPD` will have issues displaying it.
+
+
 ## Firmware
 
 First set up the MCU for Arduino. [Sparkfun has a great tutorial for the Thing.](https://learn.sparkfun.com/tutorials/esp8266-thing-hookup-guide/installing-the-esp8266-arduino-addon) I'm sure other boards have similar ones. 
 
 Load the `paper_display.ino` file from this repository into Arduino. Create a new `auth.h` file in the same project, and fill it with your WiFi credentials as well as your web services' host name and full URL path (without the http://). For example:
 
-```
+```C++
 const char WiFiSSID[] = "mywifi";
 const char WiFiPSK[] = "password";
 const char hostname[] = "my-web-service-112117.appspot.com";

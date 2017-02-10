@@ -20,7 +20,7 @@ api = tweepy.API(auth)
 # Get a random tweet from a twitter account
 @app.route('/message')
 def message():
-	tweets = api.user_timeline(screen_name='bwhitman', count=200, exclude_replies = True, include_rts = False)
+	tweets = api.user_timeline(screen_name='cookbook', count=200, exclude_replies = True, include_rts = False)
 	shuffle(tweets)
 	text = tweets[0].text
 	text = unidecode(text)
