@@ -1,6 +1,6 @@
 # paper-display
 
-Show tweets or whatever you'd like on an E-ink display on your wall
+Show live tweets over WiFi (or whatever you'd like) on an E-ink display on your wall. In this implementation, the microcontroller and e-paper display shut off after refreshing and only wake up to refresh the content and screen once an hour. This allows the frame to last one charge over a year on a single rechargable battery.
 
 ![Frame](https://github.com/bwhitman/paper-display/blob/master/images/IMG_2109.jpg?raw=true)
 
