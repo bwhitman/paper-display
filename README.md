@@ -37,7 +37,7 @@ Lastly, connect the battery to the `MCU`. The micro USB jack on the `MCU` charge
 
 ![Frame](https://github.com/bwhitman/paper-display/blob/master/images/IMG_1491.jpg?raw=true)
 
-**Expert mode**: if you want the battery to last as long as possible, I also suggest removing any power LEDs from the `MCU`. I did that by just slicing mine off after pointing a hot work reflow gun at it, but you should see if there's a way to do it by cutting a trace. 
+**Expert mode**: if you want the battery to last as long as possible, I also suggest removing any power LEDs from the `MCU`. I did that by just slicing mine off after pointing a hot air reflow gun at it, but you should see if there's a way to do it by cutting a trace. 
 
 ## Web service
 
