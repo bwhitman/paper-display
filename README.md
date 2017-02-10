@@ -37,6 +37,8 @@ Lastly, connect the battery to the `MCU`. The micro USB jack on the `MCU` charge
 
 ![Frame](https://github.com/bwhitman/paper-display/blob/master/images/IMG_1491.jpg?raw=true)
 
+**Expert mode**: if you want the battery to last as long as possible, I also suggest removing any power LEDs from the `MCU`. I did that by just slicing mine off after pointing a hot work reflow gun at it, but you should see if there's a way to do it by cutting a trace. 
+
 ## Web service
 
 The `MCU` will connect to a webservice you define every time it wakes up. I made a very simple one, hosted for free on Google App Engine, that retrieves a random tweet from the last 200 of a certain username. I've included the source code to that service in this repository as `main.py`. You can host this service anywhere you'd like: but Google App Engine was particularly easy to get going and hasn't cost me anything yet. The web service just needs to return plain ASCII text (no HTML) that will fit on the `EPD` whenever the URL is accessed. 
